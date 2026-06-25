@@ -71,7 +71,7 @@ We apply **DPO loss** to encourage correct cross-image reasoning and suppress ha
 
 ### Cross-Attn & Trunc-Attn Implementation
 
-We provide modified modeling files for multiple LVLMs (GLM-4.1V, InternVL2.5, InternLM2, and Qwen2.5VL).
+We provide modified modeling files for multiple LVLMs (GLM-4.1V, InternVL2.5 and Qwen2.5VL).
 
 - Files **without `_trunc` suffix** implement **cross-image attention (proposed method)**.
 - Files **with `_trunc` suffix** implement **truncated attention (baseline for negative sample construction)**.
