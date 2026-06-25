@@ -32,10 +32,40 @@ Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xi
   <img src="./assets/pipeline.jpg" width="75%">
 </p>
 
-### Attention as an Indicator for Detecting Hallucinations
+Our CAPL consists of two components:
 
-### Post-Selection for Data Cleaning
 
+### 1. Selective Cross-Image Token Interaction
+
+We remove the unidirectional constraint of causal attention to enable **bidirectional cross-image interaction**, while preserving intra-image causality.
+
+```math
+M^{cross}_{ij} =
+\begin{cases}
+0, & g(i) \neq g(j) \\
+M^{causal}_{ij}, & g(i) = g(j)
+\end{cases}
+```
+
+To reduce noise, we select key visual tokens based on feature magnitude and apply **selective cross-image attention**.  
+Final attention is a fusion of causal and cross-image attention, with alternating layers for stability.
+
+### 2. Cross-Image Attention Guided DPO
+
+We further optimize the model using **preference learning**.
+
+- Positive samples: generated with cross-image attention  
+- Negative samples: generated using truncated cross-image attention (blocks inter-image interaction)
+
+```math
+M^{trunc}_{ij} =
+\begin{cases}
+M^{causal}_{ij}, & g(i) = g(j) \\
+-\infty, & g(i) \neq g(j)
+\end{cases}
+```
+
+We apply **DPO loss** to encourage correct cross-image reasoning and suppress hallucinations, combined with an auxiliary NLL loss for training stability.
 
 
 ## 🎆 Training Data Examples
@@ -53,3 +83,11 @@ Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xi
 
 
 ## ✒️ Citation
+```bibtex
+@article{yang2026looking,
+  title={Looking Back and Forth: Cross-Image Attention Calibration and Attentive Preference Learning for Multi-Image Hallucination Mitigation},
+  author={Yang, Xiaochen and Fang, Hao and Kong, Jiawei and Mao, Yaoxin and Chen, Bin and Xia, Shu-Tao},
+  journal={arXiv preprint arXiv:2603.07048},
+  year={2026}
+}
+```
