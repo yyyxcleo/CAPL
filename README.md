@@ -1,6 +1,5 @@
 # Looking Back and Forth: Cross-Image Attention Calibration and Attentive Preference Learning for Multi-Image Hallucination Mitigation
 
-## Authors
 Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xia
 
 <div style='display:flex; gap: 0.25rem; '>
@@ -68,17 +67,25 @@ M^{causal}_{ij}, & g(i) = g(j) \\
 We apply **DPO loss** to encourage correct cross-image reasoning and suppress hallucinations, combined with an auxiliary NLL loss for training stability.
 
 
-## 🎆 Training Data Examples
-
-
-
 ## 🛠️ Usage
 
-### DPO Data Generation
+### Cross-Attn & Trunc-Attn Implementation
 
-### Support Models
+We provide modified modeling files for multiple LVLMs (GLM-4.1V, InternVL2.5, InternLM2, and Qwen2.5VL).
 
-### Evaluation
+- Files **without `_trunc` suffix** implement **cross-image attention (proposed method)**.
+- Files **with `_trunc` suffix** implement **truncated attention (baseline for negative sample construction)**.
+
+These modifications are applied consistently across all supported model architectures.
+
+### Training & Evaluation
+
+- **Training**
+  - GLM / Qwen: [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory)
+  - InternVL: [ms-swift](https://github.com/modelscope/ms-swift)
+
+- **Evaluation**
+  - Use [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) for all benchmarks
 
 
 
