@@ -31,7 +31,7 @@ Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xi
 
 
 
-## 🎆 MIA-DPO Data Examples
+## 🎆 Training Data Examples
 
 ---
 
@@ -40,8 +40,6 @@ Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xi
 ### DPO Data Generation
 
 ### Support Models
-
-### MIA-DPO for LLaVa1.5
 
 ### Evaluation
 
