@@ -14,7 +14,7 @@ Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xi
  
  Inspired by this, we propose a structured hallucination mitigation framework involving **C**ross-Image **A**ttention calibration and **P**reference **L**earning **(CAPL)**. CAPL explicitly enhances inter-image interactions at the architectural level while reinforcing reliance on genuine cross-image evidence during training, thereby improving the model’s perception and modeling of cross-image associations. Specifically, we (i) introduce a selectable image token interaction attention mechanism to establish fine-grained cross-image entity alignment and information flow; (ii) design a cross-image modeling–based preference optimization strategy that contrasts reasoning outcomes under full inter-image interaction and those obtained when images are mutually invisible, encouraging the model to ground its predictions in authentic visual evidence and mitigating erroneous inferences driven by textual priors. Experimental results demonstrate that CAPL consistently improves performance across multiple model architectures, achieving stable gains on both multi-image hallucination and general benchmarks. Notably, performance on single-image visual tasks remains stable or slightly improves, indicating strong generalization capability.
 
-![pipeline](./assets/motivation.jpg)
+<img src="./assets/motivation.jpg" width="70%"/>
 
 ## 💡 Highlights
 - We analyze the structural causes of hallucination in multi-image reasoning, identifying imbalanced visual information flow and insufficient cross-image semantic association as key factors that limit multi-image reasoning performance.
@@ -26,7 +26,7 @@ Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xi
 
 ## 💎 CAPL Framework
 
-![pipeline](./assets/pipeline.jpg)
+<img src="./assets/pipeline.jpg" width="70%"/>
 ### Attention as an Indicator for Detecting Hallucinations
 
 ### Post-Selection for Data Cleaning
