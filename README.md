@@ -1,6 +1,6 @@
 # Looking Back and Forth: Cross-Image Attention Calibration and Attentive Preference Learning for Multi-Image Hallucination Mitigation
 
-Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xia
+Xiaochen Yang* · Hao Fang* · Jiawei Kong · Yaoxin Mao · Bin Chen# · Shu-Tao Xia
 
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://arxiv.org/abs/2603.07048'><img src='https://img.shields.io/badge/Paper-PDF-red'></a>
@@ -20,7 +20,7 @@ Xiaochen Yang · Hao Fang · Jiawei Kong · Yaoxin Mao · Bin Chen · Shu-Tao Xi
 ## 💡 Highlights
 - We analyze the structural causes of hallucination in multi-image reasoning, identifying imbalanced visual information flow and insufficient cross-image semantic association as key factors that limit multi-image reasoning performance.
 
-- We propose a novel framework CAPL, which integrates selective cross-image attention with preference alignment training, enhancing semantic interaction among critical cross-image tokens and reinforcing the model to better perceive and utilize inter-image interactions.
+- We propose a novel framework, CAPL, which integrates selective cross-image attention with preference alignment training, enhancing semantic interaction among critical cross-image tokens and reinforcing the model to better perceive and utilize inter-image interactions.
 
 - Extensive experiments demonstrate that our method generalizes well across multiple recent vision-language models, significantly reducing hallucination and improving reasoning performance on multi-image tasks.
 
@@ -36,7 +36,7 @@ Our CAPL consists of two components:
 
 ### 1. Selective Cross-Image Token Interaction
 
-We remove the unidirectional constraint of causal attention to enable **bidirectional cross-image interaction**, while preserving intra-image causality.
+We remove the unidirectional constraint of normal causal attention to enable **bidirectional cross-image interaction**, while preserving intra-image causality.
 
 ```math
 M^{cross}_{ij} =
