@@ -71,12 +71,41 @@ We apply **DPO loss** to encourage correct cross-image reasoning and suppress ha
 
 ### Cross-Attn & Trunc-Attn Implementation
 
-We provide modified modeling files for multiple LVLMs (GLM-4.1V, InternVL2.5 and Qwen2.5VL).
+We provide modified modeling files for multiple LVLMs (GLM-4.1V, InternVL2.5, and Qwen2.5VL).
 
 - Files **without `_trunc` suffix** implement **cross-image attention (proposed method)**.
-- Files **with `_trunc` suffix** implement **truncated attention (baseline for negative sample construction)**.
+- Files **with `_trunc` suffix** implement **truncated attention (used for negative sample construction in DPO)**.
 
 These modifications are applied consistently across all supported model architectures.
+
+
+### 🔧 How to Apply (Example: Qwen2.5VL)
+
+To use our modified attention mechanism in VLMEvalKit, only a minimal change is required in the model import path.
+
+Edit the file: ./vlmeval/vlm/qwen2_vl/model.py
+
+
+Replace:
+
+```python
+from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
+```
+with the cross-image attention version:
+
+```python
+from transformers import AutoProcessor
+from .modeling_qwen2_5_vl import Qwen2_5_VLForConditionalGeneration
+```
+
+or with the truncated attention version:
+
+```python
+from transformers import AutoProcessor
+from .modeling_qwen2_5_vl_trunc import Qwen2_5_VLForConditionalGeneration
+```
+
+This enables switching between cross-image attention inference and truncated attention (DPO negative sampling) via a single-line change.
 
 ### Training & Evaluation
 
